@@ -1,7 +1,5 @@
 package shapes;
 
-import shapes.Rect;
-
 import java.awt.*;
 
 public class Square extends Rect {
