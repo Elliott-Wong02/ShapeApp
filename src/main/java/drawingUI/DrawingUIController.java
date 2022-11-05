@@ -14,8 +14,14 @@ public class DrawingUIController {
     public DrawingUIController(){
         ShapeSelector sSel = new ShapeSelector();
         ColourSelector cSel = new ColourSelector();
+        CircleDimsSelector cDim = new CircleDimsSelector();
+        RectDimsSelector rDim = new RectDimsSelector();
+        SquareDimsSelector sDim = new SquareDimsSelector();
         controlsPanel.add(sSel);
         controlsPanel.add(cSel);
+        controlsPanel.add(cDim);
+        controlsPanel.add(rDim);
+        controlsPanel.add(sDim);
         Drawing d = new Drawing();
         d.addMouseListener(new MouseListener(){
             @Override
@@ -26,13 +32,13 @@ public class DrawingUIController {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (Objects.equals(sSel.getCurrentShape(), "Circle")) {
-                    d.addCircle(e.getPoint(), cSel.getCurrentColour(), 100);
+                    d.addCircle(e.getPoint(), cSel.getCurrentColour(), cDim.getCurrentRadius());
                     d.repaint();
                 } else if (Objects.equals(sSel.getCurrentShape(), "Rectangle")) {
-                    d.addRect(e.getPoint(), cSel.getCurrentColour(), 100, 300);
+                    d.addRect(e.getPoint(), cSel.getCurrentColour(), rDim.getCurrentWidth(), rDim.getCurrentHeight());
                     d.repaint();
                 } else if (Objects.equals(sSel.getCurrentShape(), "Square")) {
-                    d.addSquare(e.getPoint(), cSel.getCurrentColour(), 50);
+                    d.addSquare(e.getPoint(), cSel.getCurrentColour(), sDim.getCurrentLength());
                     d.repaint();
                 }
             }
