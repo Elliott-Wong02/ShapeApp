@@ -13,7 +13,9 @@ public class DrawingUIController {
     private JPanel mainPanel = new JPanel(new GridLayout(2,1));
     public DrawingUIController(){
         ShapeSelector sSel = new ShapeSelector();
+        ColourSelector cSel = new ColourSelector();
         controlsPanel.add(sSel);
+        controlsPanel.add(cSel);
         Drawing d = new Drawing();
         d.addMouseListener(new MouseListener(){
             @Override
@@ -24,13 +26,13 @@ public class DrawingUIController {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (Objects.equals(sSel.getCurrentShape(), "Circle")) {
-                    d.addCircle(e.getPoint(), new Color(0x992266), 100);
+                    d.addCircle(e.getPoint(), cSel.getCurrentColour(), 100);
                     d.repaint();
                 } else if (Objects.equals(sSel.getCurrentShape(), "Rectangle")) {
-                    d.addRect(e.getPoint(), new Color(29, 100, 57), 100, 300);
+                    d.addRect(e.getPoint(), cSel.getCurrentColour(), 100, 300);
                     d.repaint();
                 } else if (Objects.equals(sSel.getCurrentShape(), "Square")) {
-                    d.addSquare(e.getPoint(), new Color(39, 23, 245), 50);
+                    d.addSquare(e.getPoint(), cSel.getCurrentColour(), 50);
                     d.repaint();
                 }
             }

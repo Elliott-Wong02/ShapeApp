@@ -7,7 +7,7 @@ public abstract class Shape implements Draw {
     protected Color col;
 
     public Shape(Point initPos, Color col) {
-        pos = initPos;
+        this.pos = initPos;
         this.col = col;
     }
 
